@@ -166,6 +166,8 @@ return [
          * Package Service Providers...
          */
         App\Providers\NovaServiceProvider::class,
+        \Beyondcode\NovaTheme\ThemeServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

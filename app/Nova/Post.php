@@ -3,6 +3,12 @@
 namespace App\Nova;
 
 use App\Http\Middleware\TrimStrings;
+use App\Nova\Actions\PublishPost;
+use App\Nova\Filters\PostPublished;
+use App\Nova\Lenses\MostTags;
+use App\Nova\Metrics\PostCount;
+use App\Nova\Metrics\PostsPerCategory;
+use App\Nova\Metrics\PostsPerDay;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -96,7 +102,11 @@ class Post extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            (new PostsPerDay())->width('full'),
+            (new PostCount())->width('1/2'),
+            (new PostsPerCategory())->width('1/2'),
+        ];
     }
 
     /**
@@ -107,7 +117,9 @@ class Post extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new PostPublished(),
+        ];
     }
 
     /**
@@ -118,7 +130,9 @@ class Post extends Resource
      */
     public function lenses(Request $request)
     {
-        return [];
+        return [
+            new MostTags(),
+        ];
     }
 
     /**
@@ -129,7 +143,13 @@ class Post extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new PublishPost())->canSee(function ($request){
+                return true;
+            })->canRun(function($request, $post){
+                return $post->id === 2;
+            }),
+        ];
     }
 
     // define your resource path
