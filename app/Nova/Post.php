@@ -88,8 +88,6 @@ class Post extends Resource
                 'tutorials' => 'Tutorials',
                 'news' => 'News',
             ])->hideWhenUpdating()->rules('required'),
-
-            BelongsTo::make('User')->rules('required'),
             BelongsToMany::make('Tags'),
         ];
     }

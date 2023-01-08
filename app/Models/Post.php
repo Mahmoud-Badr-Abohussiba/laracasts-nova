@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Nova\Actions\Actionable;
 use Laravel\Nova\Fields\Searchable;
 
@@ -28,5 +29,15 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($post) {
+            if ( !$post->user_id ) {
+                $post->user_id = Auth::id();
+            }
+        });
     }
 }
