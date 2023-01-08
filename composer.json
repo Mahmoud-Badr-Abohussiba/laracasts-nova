@@ -9,14 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "beyondcode/nova-theme": "*",
+        "beyondcode/viewcache": "*",
+        "chris-ware/nova-clock-card": "^1.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
-        "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5",
         "laravel/nova": "*",
-        "beyondcode/viewcache": "*",
-        "beyondcode/nova-theme": "*"
+        "laravel/sanctum": "^2.11",
+        "laravel/tinker": "^2.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

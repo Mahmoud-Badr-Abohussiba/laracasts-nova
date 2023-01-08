@@ -9,10 +9,13 @@
         "prod": "npm run production",
         "production": "mix --production",
         "build-viewCache": "cd nova-components/ViewCache && npm run dev",
-        "build-viewCache-prod": "cd nova-components/ViewCache && npm run prod"
+        "build-viewCache-prod": "cd nova-components/ViewCache && npm run prod",
+        "build-string-limit": "cd nova-components/StringLimit && npm run dev",
+        "build-string-limit-prod": "cd nova-components/StringLimit && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.21",
+        "cross-env": "^7.0.3",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"

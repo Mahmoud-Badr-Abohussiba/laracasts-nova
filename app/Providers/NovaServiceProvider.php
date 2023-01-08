@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use App\Nova\Metrics\PostCount;
 use App\Nova\Metrics\PostsPerCategory;
-use App\Nova\Metrics\PostsPerDay;
+use Beyondcode\NovaClock\NovaClock;
 use Beyondcode\ViewCache\ViewCache;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
@@ -61,9 +60,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
 //      new Help,
-            new PostCount(),
-            new PostsPerDay(),
-            new PostsPerCategory()
+            new \ChrisWare\NovaClockCard\NovaClockCard,
         ];
     }
 
